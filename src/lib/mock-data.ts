@@ -74,7 +74,10 @@ export const MOCK_PROPERTIES: Property[] = [
     rent: 35000,
     deposit: 70000,
     maintenance: 3500,
-    photos: ["https://images.unsplash.com/photo-1560448204-61dc36dc98ce?q=80&w=2070&auto=format&fit=crop"],
+    photos: [
+      "https://images.unsplash.com/photo-1560448204-61dc36dc98ce?q=80&w=2070&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=2070&auto=format&fit=crop"
+    ],
     is_active: true,
     is_boosted: false,
     created_at: new Date().toISOString(),
