@@ -75,8 +75,8 @@ export const MOCK_PROPERTIES: Property[] = [
     deposit: 70000,
     maintenance: 3500,
     photos: [
-      "https://images.unsplash.com/photo-1560448204-61dc36dc98ce?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=2070&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=2070&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=2070&auto=format&fit=crop"
     ],
     is_active: true,
     is_boosted: false,
