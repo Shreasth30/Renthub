@@ -1,0 +1,409 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  .theme {
+    --font-heading: var(--font-sans);
+    --font-sans: var(--font-sans);
+  }
+  :root {
+    --background: #080808;
+    --foreground: #F5F5F5;
+    --card: #111111;
+    --card-foreground: #F5F5F5;
+    --popover: #111111;
+    --popover-foreground: #F5F5F5;
+    --primary: #FFFFFF;
+    --primary-foreground: #080808;
+    --secondary: #1A1A1A;
+    --secondary-foreground: #F5F5F5;
+    --muted: #1A1A1A;
+    --muted-foreground: #9A9A9A;
+    --accent: #1A1A1A;
+    --accent-foreground: #F5F5F5;
+    --destructive: #EF4444;
+    --destructive-foreground: #FFFFFF;
+    --border: #2A2A2A;
+    --input: #404040;
+    --ring: #2A2A2A;
+    
+    --chart-1: #C9A84C;
+    --chart-2: #F5F5F5;
+    --chart-3: #9A9A9A;
+    --chart-4: #5A5A5A;
+    --chart-5: #111111;
+
+    --sidebar: #111111;
+    --sidebar-foreground: #F5F5F5;
+    --sidebar-primary: #FFFFFF;
+    --sidebar-primary-foreground: #080808;
+    --sidebar-accent: #1A1A1A;
+    --sidebar-accent-foreground: #F5F5F5;
+    --sidebar-border: #2A2A2A;
+    --sidebar-ring: #2A2A2A;
+
+    --radius: 0rem;
+  }
+  .dark {
+    --background: #080808;
+    --foreground: #F5F5F5;
+    --card: #111111;
+    --card-foreground: #F5F5F5;
+    --popover: #111111;
+    --popover-foreground: #F5F5F5;
+    --primary: #FFFFFF;
+    --primary-foreground: #080808;
+    --secondary: #1A1A1A;
+    --secondary-foreground: #F5F5F5;
+    --muted: #1A1A1A;
+    --muted-foreground: #9A9A9A;
+    --accent: #1A1A1A;
+    --accent-foreground: #F5F5F5;
+    --destructive: #EF4444;
+    --destructive-foreground: #FFFFFF;
+    --border: #2A2A2A;
+    --input: #404040;
+    --ring: #2A2A2A;
+    
+    --chart-1: #C9A84C;
+    --chart-2: #F5F5F5;
+    --chart-3: #9A9A9A;
+    --chart-4: #5A5A5A;
+    --chart-5: #111111;
+
+    --sidebar: #111111;
+    --sidebar-foreground: #F5F5F5;
+    --sidebar-primary: #FFFFFF;
+    --sidebar-primary-foreground: #080808;
+    --sidebar-accent: #1A1A1A;
+    --sidebar-accent-foreground: #F5F5F5;
+    --sidebar-border: #2A2A2A;
+    --sidebar-ring: #2A2A2A;
+  }
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply text-foreground;
+    background-color: var(--background);
+    background-image: 
+      radial-gradient(ellipse at 20% 10%, rgba(99, 102, 241, 0.12) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 90%, rgba(201, 168, 76, 0.08) 0%, transparent 50%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+/* ========================================
+   CUSTOM CURSOR — spotlight only
+   ======================================== */
+@media (hover: hover) and (pointer: fine) {
+  /* Default cursor restored */
+}
+
+/* ========================================
+   ANIMATED GRADIENT TEXT
+   ======================================== */
+.gradient-text {
+  background: linear-gradient(
+    270deg,
+    #ffffff 0%,
+    #c9a84c 25%,
+    #ffffff 50%,
+    #a0a0a0 75%,
+    #ffffff 100%
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 6s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ========================================
+   SHIMMER SWEEP (for cards / badges)
+   ======================================== */
+.shimmer-sweep {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer-sweep::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.06) 50%,
+    transparent 100%
+  );
+  animation: shimmer 3s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+/* ========================================
+   GLOW BORDER (used on cards + search)
+   ======================================== */
+.glow-border {
+  position: relative;
+}
+.glow-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(
+    135deg,
+    transparent 30%,
+    rgba(201, 168, 76, 0.3) 50%,
+    transparent 70%
+  );
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.glow-border:hover::before {
+  opacity: 1;
+}
+
+/* ========================================
+   FLOATING GRID BACKGROUND
+   ======================================== */
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: grid-float 20s linear infinite;
+}
+@keyframes grid-float {
+  0% { background-position: 0px 0px; }
+  100% { background-position: 60px 60px; }
+}
+
+/* ========================================
+   NOISE TEXTURE OVERLAY
+   ======================================== */
+.noise-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.015;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ========================================
+   GLOWING FOCUS RING (search bar)
+   ======================================== */
+.glow-focus {
+  transition: box-shadow 0.3s ease;
+}
+.glow-focus:focus-within {
+  box-shadow: 0 0 20px rgba(201, 168, 76, 0.15), 0 0 60px rgba(201, 168, 76, 0.05);
+}
+
+/* ========================================
+   RANGE SLIDER PREMIUM STYLING
+   ======================================== */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  width: 100%;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 2px;
+  background: linear-gradient(90deg, #C9A84C, #2A2A2A);
+  border-radius: 1px;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  background: #ffffff;
+  border: 2px solid #C9A84C;
+  border-radius: 50%;
+  margin-top: -6px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 0 8px rgba(201, 168, 76, 0.3);
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 16px rgba(201, 168, 76, 0.5);
+}
+input[type="range"]::-moz-range-track {
+  height: 2px;
+  background: linear-gradient(90deg, #C9A84C, #2A2A2A);
+  border-radius: 1px;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  background: #ffffff;
+  border: 2px solid #C9A84C;
+  border-radius: 50%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 0 8px rgba(201, 168, 76, 0.3);
+}
+
+/* ========================================
+   CUSTOM SCROLLBAR
+   ======================================== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #080808;
+}
+::-webkit-scrollbar-thumb {
+  background: #2A2A2A;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #404040;
+}
+
+/* ========================================
+   CARD 3D TILT (CSS-only)
+   ======================================== */
+.card-tilt {
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s ease;
+  transform-style: preserve-3d;
+  perspective: 800px;
+}
+.card-tilt:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 30px rgba(201, 168, 76, 0.08);
+}
+
+/* ========================================
+   SLIDING ARROW
+   ======================================== */
+.slide-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.slide-arrow .arrow {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.slide-arrow:hover .arrow {
+  transform: translateX(6px);
+}
+
+/* ========================================
+   FEATURED BADGE SHIMMER
+   ======================================== */
+.badge-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.badge-shimmer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(201, 168, 76, 0.3) 50%,
+    transparent 100%
+  );
+  animation: badge-sweep 2.5s ease-in-out infinite;
+}
+@keyframes badge-sweep {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+/* ========================================
+   GLASS MORPHISM UTILITY
+   ======================================== */
+.glass {
+  background: rgba(8, 8, 8, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* ========================================
+   GRADIENT DIVIDER
+   ======================================== */
+.gradient-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #C9A84C 20%,
+    #ffffff 50%,
+    #C9A84C 80%,
+    transparent 100%
+  );
+  opacity: 0.3;
+}
+
+/* ========================================
+   BUTTON SHIMMER ON HOVER
+   ======================================== */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shimmer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    transparent 100%
+  );
+  transition: left 0.5s ease;
+}
+.btn-shimmer:hover::after {
+  left: 200%;
+}
+
+/* ========================================
+   PULSE ON CLICK (heart)
+   ======================================== */
+@keyframes heart-pulse {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.3); }
+  50% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+.heart-pulse {
+  animation: heart-pulse 0.4s ease-in-out;
+}
