@@ -41,23 +41,25 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const signInAsOwner = () => {
-    const mockUser = { id: MOCK_USER_PROFILE.id, email: MOCK_USER_PROFILE.email };
+    const mockUser = { id: MOCK_USER_PROFILE.id, email: "vikram@example.com" };
     setUser(mockUser);
-    setProfile(MOCK_USER_PROFILE as Profile);
+    setProfile(MOCK_USER_PROFILE);
     localStorage.setItem("renthub_user", JSON.stringify({ user: mockUser, profile: MOCK_USER_PROFILE }));
   };
 
   const signInAsTenant = () => {
-    const tenantProfile = {
+    const tenantProfile: Profile = {
       id: "tenant-1",
       full_name: "John Doe",
-      email: "john@example.com",
       role: "tenant",
       avatar_url: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=2080&auto=format&fit=crop",
+      phone: null,
+      is_verified: false,
+      created_at: new Date().toISOString(),
     };
-    const mockUser = { id: tenantProfile.id, email: tenantProfile.email };
+    const mockUser = { id: tenantProfile.id, email: "john@example.com" };
     setUser(mockUser);
-    setProfile(tenantProfile as Profile);
+    setProfile(tenantProfile);
     localStorage.setItem("renthub_user", JSON.stringify({ user: mockUser, profile: tenantProfile }));
   };
 
